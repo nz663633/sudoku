@@ -1,4 +1,4 @@
-### 🧩 Sudoku Game (스도쿠 게임)
+## 🧩 Sudoku Game (스도쿠 게임)
 
 HTML, JavaScript, 그리고 Python(또는 Go)을 사용하여 만든 웹 기반 스도쿠 게임입니다.  
 사용자가 9×9 스도쿠 판에 숫자를 입력하면, 백엔드에서 정답 검증을 수행하고  
@@ -6,7 +6,7 @@ HTML, JavaScript, 그리고 Python(또는 Go)을 사용하여 만든 웹 기반 
 
 ---------
 
-##### 🎯 프로젝트 개요
+### 🎯 프로젝트 개요
 
 이 프로젝트는 프론트엔드(HTML, CSS, JavaScript)와  
 백엔드(Python Flask 또는 Go Gin)를 연결하는 연습용 토이 프로젝트입니다.
