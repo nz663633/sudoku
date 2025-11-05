@@ -11,18 +11,15 @@ This project is a practice toy project designed to connect
 a frontend (HTML, CSS, JavaScript) with a backend (Python Flask or Go Gin).
 
 - **Frontend:**  
-HTML: Builds the Sudoku board and control buttons
-
-CSS: Handles styles and visual effects
-
-JavaScript: Generates puzzles, manages user input, and displays a timer
++ HTML: Builds the Sudoku board and control buttons
++ CSS: Handles styles and visual effects
++ JavaScript: Generates puzzles, manages user input, and displays a timer
 
 - **Backend:**  
-Python or Go: Receives user input and validates the solution
-
-Provides API endpoints
++ Python or Go: Receives user input and validates the solution
++ Provides API endpoints
 
 ---------
 
-##### 📂 Project Structure
+### 📂 Project Structure
 
