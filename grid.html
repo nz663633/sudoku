@@ -56,53 +56,19 @@
     <input type="button" value="Lv.3">
     </div>
     <div class="chart">
-    <table>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-        <tr>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-            <td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td><td><input type="text" maxlength="1"></td>
-        </tr>
-    </table>
     </div>
-</body>
-</html>
+    <script>
+        var table = document.createElement("table");
+        for (var i = 0; i < 9; i++) {
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (var j = 0; j < 9; j++) {
+                var td = document.createElement("td");
+                var input = document.createElement("input");
+                tr.appendChild(td);
+                td.appendChild(input);
+            }
+        }
+        document.querySelector(".chart").appendChild(table);
+    </script>
+    
