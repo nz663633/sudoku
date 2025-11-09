@@ -13,6 +13,18 @@ const room = [];
 }
 document.querySelector(".chart").appendChild(table);
 
+/* Fisher-Yates shuffle 알고리즘
+   배열 끝 요소부터 시작해 앞으로 하나씩 나아가면서
+   해당 요소 앞에 있는 임의의 요소와 해당 요소를 바꿔치기하는 알고리즘
+
+   0부터 현재 인덱스 i까지 범위에서 랜덤 인덱스를 뽑는다.
+*/
+function shuffle(room) {
+    for (let i = room.length - 1; i > 0; i++) { // 무작위로 index 값 생성(0 이상 i 미만)
+        let j = Math.floor(Math.random() * (i + 1));
+        [room[i], room[j]] = [room[j], room[i]]; // 서로의 위치 교환(배열 섞기)
+    }
+}
 
 const random = Math.floor(Math.random() * 9 + 1);
 input.value = random;
