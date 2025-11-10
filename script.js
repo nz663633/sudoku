@@ -18,6 +18,7 @@ function shuffle(room) {
     }
 }
 
+// 스도쿠 격자판 만들기(9x9)
 var table = document.createElement("table");
 
  for (let i = 0; i < 9; i++) {
@@ -34,9 +35,21 @@ var table = document.createElement("table");
 }
 document.querySelector(".chart").appendChild(table);
 
+// 81칸 중 25칸에 들어갈 난수 생성
 shuffle(room)
 
 for (let i = 0; i < 25; i++) {
     const random = Math.floor(Math.random() * 9 + 1);
     room[i].value = random;
 }
+
+// 이중배열 만들기
+let fullBox = [];
+for (let i = 0; i < 9; i++) {
+    let row = [];
+    for (let j = 0; j < 9; j++) {
+        row.push(0); // 0은 임시값
+    }
+    fullBox.push(row);
+}
+console.log(fullBox);
