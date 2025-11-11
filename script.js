@@ -18,10 +18,11 @@ function shuffle(room) {
     }
 }
 
+
 // 스도쿠 격자판 만들기(9x9)
 var table = document.createElement("table");
 
- for (let i = 0; i < 9; i++) {
+for (let i = 0; i < 9; i++) {
     let tr = document.createElement("tr");
     table.appendChild(tr);
     for (let j = 0; j < 9; j++) {
@@ -35,21 +36,46 @@ var table = document.createElement("table");
 }
 document.querySelector(".chart").appendChild(table);
 
-// 81칸 중 25칸에 들어갈 난수 생성
-shuffle(room)
-
-for (let i = 0; i < 25; i++) {
-    const random = Math.floor(Math.random() * 9 + 1);
-    room[i].value = random;
-}
 
 // 이중배열 만들기
 let fullBox = [];
+let row = [];
 for (let i = 0; i < 9; i++) {
-    let row = [];
     for (let j = 0; j < 9; j++) {
         row.push(0); // 0은 임시값
     }
     fullBox.push(row);
 }
 console.log(fullBox);
+
+
+// 81칸 중 25칸에 들어갈 난수 생성 + 랜덤으로 숫자 배치(무작위로 섞은 후 배열 앞쪽 25칸 선택)
+shuffle(room)
+
+for (let n = 0; n < 25; n++) {
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            while (true) {
+                const random = Math.floor(Math.random() * 9 + 1);
+                let overlap = false;
+                for (let k = 0; k < 9; k++) { // 행(row) 검사
+                    if (fullBox[i][k] == random) {
+                        overlap = true;
+                    }
+                }
+                for (let k = 0; k < 9; k++) { // 열(col) 검사
+                    if (fullBox[k][j] == random) {
+                        overlap = true;
+                    }
+                }
+                for (let k = 0; k < 3; k++) {
+                    for (let r = 0; r < 3; r++)
+                        if (fullBox[k][r] == random) {
+                            overlap = true;
+                        }
+                }
+            }
+        }
+    }
+
+}
