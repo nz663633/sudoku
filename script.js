@@ -39,8 +39,8 @@ document.querySelector(".chart").appendChild(table);
 
 // 이중배열 만들기
 let fullBox = [];
-let row = [];
 for (let i = 0; i < 9; i++) {
+    let row = [];
     for (let j = 0; j < 9; j++) {
         row.push(0); // 0은 임시값
     }
