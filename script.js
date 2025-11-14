@@ -68,14 +68,19 @@ for (let n = 0; n < 25; n++) {
                         overlap = true;
                     }
                 }
-                for (let k = 0; k < 3; k++) {
-                    for (let r = 0; r < 3; r++)
-                        if (fullBox[k][r] == random) {
+                let rowFirst = Math.floor(i / 3) * 3
+                let colFirst = Math.floor(j / 3) * 3
+                for (let rowOffset = 0; rowOffset < 3; rowOffset++) { //offset : 기준점에서 얼마나 떨어져 있는지를 나타내는 차이값
+                    let row = rowFirst + rowOffset;
+                    for (let colOffset = 0; colOffset < 3; colOffset++) {
+                        let col = colFirst + colOffset;
+                        if (fullBox[row][col] == random) {
                             overlap = true;
                         }
+                    }
                 }
+                break
             }
         }
     }
-
 }
