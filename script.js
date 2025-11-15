@@ -1,4 +1,4 @@
-let room = [];
+let room = []; // html 입력칸 요소들을 담는 배열(input 요소 자체)
 
 /*
 < Fisher-Yates shuffle 알고리즘 >
@@ -17,7 +17,6 @@ function shuffle(room) {
         room[j] = num;      // 서로의 위치 교환(배열 섞기)
     }
 }
-
 
 // 스도쿠 격자판 만들기(9x9)
 var table = document.createElement("table");
@@ -49,38 +48,53 @@ for (let i = 0; i < 9; i++) {
 console.log(fullBox);
 
 
-// 81칸 중 25칸에 들어갈 난수 생성 + 랜덤으로 숫자 배치(무작위로 섞은 후 배열 앞쪽 25칸 선택)
+// 스도쿠 81칸을 좌표로 만들기
+let coords = [];
+let rows = 9;
+let cols = 9;
+for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+        coords.push([i,j]);
+    }
+}
+
+
+// 81칸 중 25칸에 들어갈 난수 생성
+// 랜덤으로 숫자 배치(무작위로 섞은 후 배열 앞쪽 25칸 선택)
+// 행, 열, 박스를 기준으로 25칸에 들어갈 난수 중복 검사
 shuffle(room)
 
 for (let n = 0; n < 25; n++) {
-    for (let i = 0; i < 9; i++) {
-        for (let j = 0; j < 9; j++) {
-            while (true) {
-                const random = Math.floor(Math.random() * 9 + 1);
-                let overlap = false;
-                for (let k = 0; k < 9; k++) { // 행(row) 검사
-                    if (fullBox[i][k] == random) {
-                        overlap = true;
-                    }
+    room[n]; // 실제 스도쿠 입력 칸(input) 요소를 의미
+    i = Math.floor(n / 9) // n칸에 대한 행 좌표
+    j = n % 9 // n칸에 대한 열 좌표
+    let overlap = true;
+    while (overlap) {
+        overlap = false;
+        const random = Math.floor(Math.random() * 9 + 1);
+        for (let k = 0; k < 9; k++) { // 행(row) 검사
+            if (fullBox[i][k] == random) {
+                overlap = true;
+            }
+        }
+        for (let k = 0; k < 9; k++) { // 열(col) 검사
+            if (fullBox[k][j] == random) {
+                overlap = true;
+            }
+        }
+        // 박스(3x3) 검사
+        let rowFirst = Math.floor(i / 3) * 3
+        let colFirst = Math.floor(j / 3) * 3
+        for (let rowOffset = 0; rowOffset < 3; rowOffset++) { //offset : 기준점에서 얼마나 떨어져 있는지를 나타내는 차이값
+            for (let colOffset = 0; colOffset < 3; colOffset++) {
+                let row = rowFirst + rowOffset;
+                let col = colFirst + colOffset;
+                if (fullBox[row][col] == random) {
+                    overlap = true;
                 }
-                for (let k = 0; k < 9; k++) { // 열(col) 검사
-                    if (fullBox[k][j] == random) {
-                        overlap = true;
-                    }
-                }
-                let rowFirst = Math.floor(i / 3) * 3
-                let colFirst = Math.floor(j / 3) * 3
-                for (let rowOffset = 0; rowOffset < 3; rowOffset++) { //offset : 기준점에서 얼마나 떨어져 있는지를 나타내는 차이값
-                    let row = rowFirst + rowOffset;
-                    for (let colOffset = 0; colOffset < 3; colOffset++) {
-                        let col = colFirst + colOffset;
-                        if (fullBox[row][col] == random) {
-                            overlap = true;
-                        }
-                    }
-                }
-                break
             }
         }
     }
+    fullBox[i][j] = random;
+    room[n].value = random;
 }
