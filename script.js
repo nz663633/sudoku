@@ -60,31 +60,30 @@ for (let i = 0; i < rows; i++) {
 // 81개 좌표 섞기
 shuffle(coords)
 
-
-// 81칸 중 25칸에 들어갈 난수 생성
-// 랜덤으로 숫자 배치(무작위로 섞은 후 배열 앞쪽 25칸 선택)
-// 행, 열, 박스를 기준으로 25칸에 들어갈 난수 중복 검사
+// 1) 섞어둔 좌표 coords에서 앞 25개를 선택
+// 2) 해당 칸에 들어갈 후보 숫자(1~9) 중 중복된 수를 제거하는 검사 실시
+// 3) 제거 후 남은 후보에서 무작위로 하나를 골라 채우기
 for (let n = 0; n < 25; n++) {
-    let [i, j] = coords[n]; // 섞은 좌표에서 가져오기
-    let index = i * 9 + j
+    let [i, j] = coords[n]; // 섞어둔 좌표에서 가져오기, 현재 채울 셀의 행 i, 열 j
+    let index = i * 9 + j // 2차원 좌표를 1차원 배열(index)로 바꿈, 
     let candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (let k = 0; k < 9; k++) {
         let rowUsed = fullBox[i][k];
         let rowIndex = candidates.indexOf(rowUsed)
-        if (rowIndex != -1) { // rowUsed가 배열에 존재한다면?
+        if (rowIndex != -1) { // rowUsed가 후보배열에 존재한다면?
             candidates.splice(rowIndex, 1); // 해당 인덱스의 값을 제거
         }
     }
     for (let k = 0; k < 9; k++) {
         let colUsed = fullBox[k][j];
         let colIndex = candidates.indexOf(colUsed)
-        if (colIndex != -1) {
-            candidates.splice(colIndex, 1);
+        if (colIndex != -1) { // colUsed가 후보배열에 존재한다면?
+            candidates.splice(colIndex, 1); // 해당 인덱스의 값을 제거
         }
     }
-    let rowFirst = Math.floor(i / 3) * 3
-    let colFirst = Math.floor(j / 3) * 3
-    for (let rowOffset = 0; rowOffset < 3; rowOffset++) { //offset : 기준점에서 얼마나 떨어져 있는지를 나타내는 차이값
+    let rowFirst = Math.floor(i / 3) * 3 // 행 0, 3, 6번째 칸을 기준
+    let colFirst = Math.floor(j / 3) * 3 // 열 0, 3, 6번째 칸을 기준
+    for (let rowOffset = 0; rowOffset < 3; rowOffset++) { // offset : 기준점에서 얼마나 떨어져 있는지를 나타내는 차이값
         for (let colOffset = 0; colOffset < 3; colOffset++) {
             let row = rowFirst + rowOffset;
             let col = colFirst + colOffset;
@@ -95,11 +94,10 @@ for (let n = 0; n < 25; n++) {
             }
         }
     }
-    let chosen = candidates[Math.floor(Math.random() * candidates.length)]; // candidates[0]부터 [8]까지
-    if (candidates.length === 0) {
-        //console.log("No candidates left for", i, j);
-        continue; // 또는 다른 처리
+    if (candidates.length === 0) { // 후보 배열이 비어있는가?
+        continue; // 비어있다면 해당 칸 건너뛰기 -> 다음 n으로 넘어가기
     }
-    fullBox[i][j] = chosen;
-    room[index].value = chosen;
+    let chosen = candidates[Math.floor(Math.random() * candidates.length)]; // 남은 후보 배열에서 하나 고르기
+    fullBox[i][j] = chosen; // 실제 fullBox의 (i, j) 위치에 값 넣기
+    room[index].value = chosen; // 화면(UI)의 index에도 값 넣기
 }
