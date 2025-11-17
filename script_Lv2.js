@@ -101,3 +101,13 @@ for (let n = 0; n < 25; n++) {
     fullBox[i][j] = chosen; // 실제 fullBox의 (i, j) 위치에 값 넣기
     room[index].value = chosen; // 화면(UI)의 index에도 값 넣기
 }
+
+document.getElementById("Lv1_btn").addEventListener('click', function() {
+    location.href = 'Lv1.html'
+})
+document.getElementById("Lv2_btn").addEventListener('click', function() {
+    location.href = 'Lv2.html'
+})
+document.getElementById("Lv3_btn").addEventListener('click', function() {
+    location.href = 'Lv3.html'
+})
