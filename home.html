@@ -1,60 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docugment</title>
     <style>
-        table, tr, td{
+        table,
+        tr,
+        td {
             border: 1px solid black;
             border-collapse: collapse;
         }
+
         td input {
             width: 40px;
             height: 40px;
             text-align: center;
             font-size: 20px;
         }
+
         tr:nth-child(3n+1) {
             border-top: 2px solid black;
         }
+
         td:nth-child(3n+1) {
             border-left: 2px solid black;
         }
+
         tr:last-child {
             border-bottom: 2px solid black;
         }
+
         td:last-child {
             border-right: 2px solid black;
         }
+
         .chart {
             display: flex;
             justify-content: center;
             gap: 15px;
         }
+
         .sentence {
             display: flex;
             gap: 15px;
             margin-top: 15px;
             margin-bottom: 20px;
         }
+
         h3 {
             text-align: center;
         }
     </style>
 </head>
+
 <body>
     <h3>스도쿠 게임</h3>
     <hr>
     <div class="sentence">
-    <ul>
-        <li>난이도를 선택하세요!</li>
-    </ul>
-    <input id="Lv1_btn" type="button" value="Lv.1">
-    <input id="Lv2_btn" type="button" value="Lv.2">
-    <input id="Lv3_btn" type="button" value="Lv.3">
+        <ul>
+            <li>난이도를 선택하세요!</li>
+        </ul>
+        <input id="Lv1_btn" type="button" value="Lv.1">
+        <input id="Lv2_btn" type="button" value="Lv.2">
+        <input id="Lv3_btn" type="button" value="Lv.3">
     </div>
     <div class="chart">
     </div>
-    <script src="script_Lv1.js"></script>
-    
+    <script src="homeScript.js"></script>
