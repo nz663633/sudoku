@@ -1,0 +1,10 @@
+fullBox = []
+fullBox.append([5,1,9,7,4,8,6,3,2])
+fullBox.append([7,8,3,6,5,2,4,1,9])
+fullBox.append([4,2,6,1,3,9,8,7,5])
+fullBox.append([3,5,7,9,8,6,2,4,1])
+fullBox.append([2,6,4,3,1,7,5,9,8])
+fullBox.append([1,9,8,5,2,4,3,6,7])
+fullBox.append([9,7,5,8,6,3,1,2,4])
+fullBox.append([8,3,2,4,9,1,7,5,6])
+fullBox.append([6,4,1,2,7,5,9,8,3])
