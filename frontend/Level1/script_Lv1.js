@@ -21,7 +21,7 @@
 // 1) 섞어둔 좌표 coords에서 앞 25개를 선택
 // 2) 해당 칸에 들어갈 후보 숫자(1~9) 중 중복된 수를 제거하는 검사 실시
 // 3) 제거 후 남은 후보에서 무작위로 하나를 골라 채우기
-// for (let n = 0; n < 32; n++) {
+// for (let n = 0; n < 36; n++) {
 //     let [i, j] = coords[n]; // 섞어둔 좌표에서 가져오기, 현재 채울 셀의 행 i, 열 j
 //     let index = i * 9 + j // 2차원 좌표를 1차원 배열(index)로 바꿈, 
 //     let candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -60,7 +60,7 @@
 //     room[index].value = chosen; // 화면(UI)의 index에도 값 넣기
 // }
 
-let room = []; // html 입력칸 요소들을 담는 배열(input 요소 자체)
+let room = []; // 실제 html 입력칸 요소들을 담는 1차원 배열(input 요소 자체)
 
 // 스도쿠 격자판 만들기(9x9)
 var table = document.createElement("table");
@@ -101,14 +101,3 @@ for (let i = 0; i < rows; i++) {
         coords.push([i, j]);
     }
 }
-
-
-document.getElementById("Lv1_btn").addEventListener('click', function() {
-    location.href = 'Lv1.html'
-})
-document.getElementById("Lv2_btn").addEventListener('click', function() {
-    location.href = 'Lv2.html'
-})
-document.getElementById("Lv3_btn").addEventListener('click', function() {
-    location.href = 'Lv3.html'
-})

@@ -101,14 +101,3 @@ for (let i = 0; i < rows; i++) {
         coords.push([i, j]);
     }
 }
-
-
-document.getElementById("Lv1_btn").addEventListener('click', function() {
-    location.href = 'Lv1.html'
-})
-document.getElementById("Lv2_btn").addEventListener('click', function() {
-    location.href = 'Lv2.html'
-})
-document.getElementById("Lv3_btn").addEventListener('click', function() {
-    location.href = 'Lv3.html'
-})
