@@ -72,6 +72,7 @@ for (let i = 0; i < 9; i++) {
         let td = document.createElement("td");
         let input = document.createElement("input");
         input.type = "text";
+        input.maxLength = "1";
         tr.appendChild(td);
         td.appendChild(input);
         room.push(input);
@@ -102,10 +103,10 @@ for (let i = 0; i < rows; i++) {
     }
 }
 
-// 스도쿠 보드 렌더링 코드
-// 문제 1번
-board1_Lv1_btn.addEventListener("click", () => {
-    let board1_Lv1 = [
+// 레벨 1에 해당하는 문제 1~3 보드를
+// 객체 boards를 생성해 넣어두기
+const boards = {
+    1: [
         [8, "", 5, "", 1, "", 9, "", ""],
         ["", 9, "", 8, "", 7, "", 3, ""],
         [4, "", "", "", 9, 3, "", "", 8],
@@ -115,27 +116,9 @@ board1_Lv1_btn.addEventListener("click", () => {
         [6, "", 2, "", "", 1, "", "", 4],
         ["", 8, "", 3, 4, "", 2, "", ""],
         [3, "", 4, 9, "", 2, "", 1, ""]
-    ];
+    ],
 
-    let board = board1_Lv1;
-
-    for (let i = 0; i < 9; i++) {
-        for (let j = 0; j < 9; j++) {
-            let index = i * 9 + j;
-            if (board[i][j] !== "") {
-                room[index].value = board[i][j];
-                room[index].disabled = true;
-            } else {
-                room[index].value = "";
-                room[index].disabled = false;
-            }
-        }
-    }
-})
-
-// 문제 2번
-board2_Lv1_btn.addEventListener("click", () => {
-    let board2_Lv1 = [
+    2: [
         ["", "", 9, "", 4, "", 6, "", 2],
         ["", 8, "", 6, "", 2, "", 1, ""],
         [4, "", "", 1, 3, 9, "", "", 5],
@@ -145,27 +128,9 @@ board2_Lv1_btn.addEventListener("click", () => {
         [9, "", 5, "", 6, 3, "", "", 4],
         ["", 3, "", 4, 9, "", 7, "", ""],
         [6, "", "", 2, "", 5, "", "", ""]
-    ];
+    ],
 
-    let board = board2_Lv1;
-
-    for (let i = 0; i < 9; i++) {
-        for (let j = 0; j < 9; j++) {
-            let index = i * 9 + j;
-            if (board[i][j] !== "") {
-                room[index].value = board[i][j];
-                room[index].disabled = true;
-            } else {
-                room[index].value = "";
-                room[index].disabled = false;
-            }
-        }
-    }
-})
-
-// 문제 3번
-board3_Lv1_btn.addEventListener("click", () => {
-    let board3_Lv1 = [
+    3: [
         ["", "", 7, "", "", 4, 3, "", 6],
         [9, "", 5, 3, "", "", 1, "", ""],
         [3, "", "", 6, "", "", 7, 5, ""],
@@ -175,21 +140,30 @@ board3_Lv1_btn.addEventListener("click", () => {
         [7, "", "", 2, 3, "", 9, 1, 4],
         ["", "", "", 7, "", 6, 8, "", 3],
         [2, 3, "", "", "", 1, "", 6, ""]
-    ];
+    ]
+};
 
-    let board = board3_Lv1;
+/* URL에서 문제 번호 가져오기
+location.search는 URL의 물음표 뒷부분(location.search === ?board=1)
+URLSearchParams */
+const params = new URLSearchParams(location.search);
+const boardNum = params.get("board"); // URL에서 board라는 이름의 값을 가져옴
 
-    for (let i = 0; i < 9; i++) {
+const board = boards[boardNum]; // boards에서 키(1~3) 가져오고, 해당하는 값(배열) 가져옴
+
+if (board) {
+    for (let i = 0; i < 9; i++) { // 스도쿠 9x9 모든 칸을 순회
         for (let j = 0; j < 9; j++) {
-            let index = i * 9 + j;
-            if (board[i][j] !== "") {
-                room[index].value = board[i][j];
-                room[index].disabled = true;
+            const index = i * 9 + j; // 2차원 -> 1차원으로 변경(room이 1차원 배열이라서)
+
+            if (board[i][j] !== "") { // 해당 칸이 비어있지 않다면?
+                room[index].value = board[i][j]; // 문제에서 주어진 숫자를 사용
+                room[index].disabled = true; // 바뀔 수 없는 칸 (입력X)
             } else {
-                room[index].value = "";
-                room[index].disabled = false;
+                room[index].value = ""; // 사용자가 입력 가능하도록 함
+                room[index].disabled = false; // 바뀔 수 있는 칸 (입력O)
             }
         }
     }
-})
+}
 
