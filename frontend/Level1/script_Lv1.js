@@ -101,3 +101,95 @@ for (let i = 0; i < rows; i++) {
         coords.push([i, j]);
     }
 }
+
+// 스도쿠 보드 렌더링 코드
+// 문제 1번
+board1_Lv1_btn.addEventListener("click", () => {
+    let board1_Lv1 = [
+        [8, "", 5, "", 1, "", 9, "", ""],
+        ["", 9, "", 8, "", 7, "", 3, ""],
+        [4, "", "", "", 9, 3, "", "", 8],
+        ["", 6, 9, 1, "", "", 7, "", 2],
+        [1, "", "", 6, "", 8, "", 4, ""],
+        ["", 4, "", "", 2, "", 1, 6, ""],
+        [6, "", 2, "", "", 1, "", "", 4],
+        ["", 8, "", 3, 4, "", 2, "", ""],
+        [3, "", 4, 9, "", 2, "", 1, ""]
+    ];
+
+    let board = board1_Lv1;
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let index = i * 9 + j;
+            if (board[i][j] !== "") {
+                room[index].value = board[i][j];
+                room[index].disabled = true;
+            } else {
+                room[index].value = "";
+                room[index].disabled = false;
+            }
+        }
+    }
+})
+
+// 문제 2번
+board2_Lv1_btn.addEventListener("click", () => {
+    let board2_Lv1 = [
+        ["", "", 9, "", 4, "", 6, "", 2],
+        ["", 8, "", 6, "", 2, "", 1, ""],
+        [4, "", "", 1, 3, 9, "", "", 5],
+        ["", 5, 7, 9, "", "", 2, "", 1],
+        [2, "", "", 3, "", 7, "", 9, ""],
+        ["", 9, "", 5, 2, "", 3, "", ""],
+        [9, "", 5, "", 6, 3, "", "", 4],
+        ["", 3, "", 4, 9, "", 7, "", ""],
+        [6, "", "", 2, "", 5, "", "", ""]
+    ];
+
+    let board = board2_Lv1;
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let index = i * 9 + j;
+            if (board[i][j] !== "") {
+                room[index].value = board[i][j];
+                room[index].disabled = true;
+            } else {
+                room[index].value = "";
+                room[index].disabled = false;
+            }
+        }
+    }
+})
+
+// 문제 3번
+board3_Lv1_btn.addEventListener("click", () => {
+    let board3_Lv1 = [
+        ["", "", 7, "", "", 4, 3, "", 6],
+        [9, "", 5, 3, "", "", 1, "", ""],
+        [3, "", "", 6, "", "", 7, 5, ""],
+        ["", 9, 3, "", 6, "", "", "", 1],
+        ["", "", 2, "", 1, "", 6, "", 9],
+        ["", 1, 8, "", 7, 2, "", "", ""],
+        [7, "", "", 2, 3, "", 9, 1, 4],
+        ["", "", "", 7, "", 6, 8, "", 3],
+        [2, 3, "", "", "", 1, "", 6, ""]
+    ];
+
+    let board = board3_Lv1;
+
+    for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+            let index = i * 9 + j;
+            if (board[i][j] !== "") {
+                room[index].value = board[i][j];
+                room[index].disabled = true;
+            } else {
+                room[index].value = "";
+                room[index].disabled = false;
+            }
+        }
+    }
+})
+
