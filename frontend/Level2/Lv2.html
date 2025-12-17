@@ -50,20 +50,9 @@
     <ul>
         <li><b><em>Level2에 대한 문제를 골라보세요!</em></b></li>
     </ul>
-        <input id="board1_Lv2_btn" type="button" value="문제 1">
-        <input id="board2_Lv2_btn" type="button" value="문제 2">
-        <input id="board3_Lv2_btn" type="button" value="문제 3">
+        <input type="button" value="문제 1" onclick="location.href='board1_Lv2.html?board=1'">
+        <input type="button" value="문제 2" onclick="location.href='board2_Lv2.html?board=2'">
+        <input type="button" value="문제 3" onclick="location.href='board3_Lv2.html?board=3'">
     </div>
     <div class="chart">
     </div>
-    <script>
-        document.getElementById("board1_Lv2_btn").addEventListener('click', function () {
-            location.href = 'board1_Lv2.html'
-        })
-        document.getElementById("board2_Lv2_btn").addEventListener('click', function () {
-            location.href = 'board2_Lv2.html'
-        })
-        document.getElementById("board3_Lv2_btn").addEventListener('click', function () {
-            location.href = 'board3_Lv2.html'
-        })
-    </script>
