@@ -166,4 +166,13 @@ if (board) {
     }
 }
 
+document.getElementById("submit").addEventListener("click", () => {
+    let submit = confirm("제출하시겠습니까?");
+    if (submit === true) {
+        return;
+    } else {
+        return;
+    }
+});
+
 
