@@ -46,3 +46,12 @@ board3_Lv3.append([7,"","","","","",9,"",4])
 board3_Lv3.append(["","","",7,"","",8,"",3])
 board3_Lv3.append(["",3,"","",4,1,"",6,""])
 
+# request: HTTP 요청 관련 정보
+# get_json(): request의 JSON 데이터를 Python 자료형(dic/list)으로 변환
+from flask import Flask, request, jsonify # flask 앱과 요청처리, JSON 응답 준비
+
+app = Flask(__name__) # flask 앱 생성
+
+@app.route('/api/check_board', methods = ['POST']) # POST 요청 받을 라우트 지정
+def check_board():
+    data = request.get_json() # JS에서 보낸 allBoards 받기

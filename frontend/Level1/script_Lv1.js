@@ -226,7 +226,11 @@ const data3 = {
 
 // JSON.stringify() : 객체를 JSON으로 변환
 // JSON.parse() : JSON을 객체로 변환
-let jsonData1 = JSON.stringify(data1);
-let jsonData2 = JSON.stringify(data2);
-let jsonData3 = JSON.stringify(data3);
 
+const allBoards = [data1, data2, data3];
+
+fetch('/api/check_board', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'}, // 요청에 담긴 데이터의 타입: JSON 문자열
+    body: JSON.stringify(allBoards)
+});
