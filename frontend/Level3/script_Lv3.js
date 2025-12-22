@@ -222,3 +222,9 @@ const data3 = {
         [0, 3, 0, 0, 4, 1, 0, 6, 0]
     ]
 };
+
+// JSON.stringify() : 객체를 JSON으로 변환
+// JSON.parse() : JSON을 객체로 변환
+let jsonData1 = JSON.stringify(data1);
+let jsonData2 = JSON.stringify(data2);
+let jsonData3 = JSON.stringify(data3);
