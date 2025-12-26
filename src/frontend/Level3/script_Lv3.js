@@ -166,70 +166,40 @@ if (board) {
     }
 }
 
+// 제출버튼을 눌렀을 때
 document.getElementById("submit").addEventListener("click", () => {
     let submit = confirm("제출하시겠습니까?");
+
     if (submit === true) {
-        return;
+        const currentBoard = []; // 사용자가 빈칸을 입력한 스도쿠판
+        for (let i = 0; i < 9; i++) {
+            let row = [];
+            for (let j = 0; j < 9; j++) {
+                row.push(0); // 0은 임시값
+            }
+            currentBoard.push(row);
+        }
+
+        let boardBind = document.querySelectorAll('input');
+        boardBind.forEach((elm, index) => {
+            const row = Math.floor(index / 9);
+            const col = index % 9
+            currentBoard[row][col] = Number(elm.value) || 0; // 빈칸이 있다면 자동으로 0
+        });
+
+        let currentInfo = {
+            currentBoard: currentBoard,
+            boardNum: boardNum
+        };
+
+        // JSON.stringify() : 객체를 JSON으로 변환
+        // JSON.parse() : JSON을 객체로 변환
+        fetch('/api/check_board', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }, // 요청에 담긴 데이터의 타입: JSON 문자열
+            body: JSON.stringify(currentInfo)
+        });
     } else {
         return;
     }
-});
-
-const data1 = {
-    level: 3,
-    boardNum: 1,
-    board: [
-        [8, 0, 5, 0, 0, 0, 9, 0, 0],
-        [0, 9, 0, 0, 0, 7, 0, 3, 1],
-        [4, 0, 0, 0, 0, 0, 0, 0, 8],
-        [0, 6, 0, 1, 0, 0, 7, 0, 0],
-        [1, 0, 3, 0, 0, 8, 0, 4, 0],
-        [0, 4, 0, 0, 2, 0, 1, 0, 3],
-        [6, 0, 0, 0, 0, 1, 0, 0, 4],
-        [0, 8, 0, 3, 0, 0, 2, 0, 0],
-        [3, 0, 0, 9, 6, 0, 0, 1, 0]
-    ]
-};
-
-const data2 = {
-    level: 3,
-    boardNum: 2,
-    board: [
-        [0, 0, 0, 0, 4, 0, 6, 0, 2],
-        [0, 8, 0, 0, 0, 2, 0, 1, 0],
-        [4, 0, 0, 1, 0, 0, 0, 0, 5],
-        [0, 5, 0, 9, 0, 0, 2, 0, 1],
-        [2, 0, 0, 3, 0, 7, 0, 9, 0],
-        [0, 9, 0, 0, 2, 0, 3, 0, 0],
-        [0, 0, 0, 0, 0, 3, 0, 0, 4],
-        [8, 0, 2, 4, 0, 0, 7, 0, 0],
-        [6, 0, 0, 2, 0, 0, 0, 8, 3]
-    ]
-};
-
-const data3 = {
-    level: 3,
-    boardNum: 3,
-    board: [
-        [8, 0, 7, 0, 0, 4, 0, 0, 0],
-        [0, 6, 0, 3, 0, 0, 1, 0, 0],
-        [3, 0, 0, 6, 0, 0, 0, 5, 0],
-        [0, 0, 3, 0, 6, 8, 0, 0, 1],
-        [0, 0, 2, 0, 0, 0, 6, 0, 9],
-        [6, 1, 0, 0, 7, 0, 0, 3, 0],
-        [7, 0, 0, 0, 0, 0, 9, 0, 4],
-        [0, 0, 0, 7, 0, 0, 8, 0, 3],
-        [0, 3, 0, 0, 4, 1, 0, 6, 0]
-    ]
-};
-
-// JSON.stringify() : 객체를 JSON으로 변환
-// JSON.parse() : JSON을 객체로 변환
-
-const allBoards = [data1, data2, data3];
-
-fetch('/api/check_board', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'}, // 요청에 담긴 데이터의 타입: JSON 문자열
-    body: JSON.stringify(allBoards)
 });
