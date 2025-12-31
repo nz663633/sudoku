@@ -55,3 +55,9 @@ app = Flask(__name__) # flask 앱 생성
 @app.route('/api/check_board', methods = ['POST']) # POST 요청 받을 라우트 지정
 def check_board():
     data = request.get_json() # JS에서 보낸 allBoards 받기
+    currentBoard = data["currentBoard"]
+    for row in range(9):
+        for col in range(9):
+            if currentBoard[row][col] != fullBox[row][col]:
+                return False
+    return True
