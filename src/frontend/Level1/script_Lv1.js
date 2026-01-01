@@ -199,7 +199,7 @@ document.getElementById("submit").addEventListener("click", () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, // 요청에 담긴 데이터의 타입: JSON 문자열
             body: JSON.stringify(currentInfo)
-        });
+        })
     } else {
         return;
     }

@@ -60,5 +60,5 @@ def check_board():
     for row in range(9):
         for col in range(9):
             if currentBoard[row][col] != fullBox[row][col]:
-                return False
-    return True
+                return "False"
+    return "True"
