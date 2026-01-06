@@ -1,14 +1,14 @@
 # 두번째 스도쿠 정답표
-fullBox = []
-fullBox.append([5,1,9,7,4,8,6,3,2])
-fullBox.append([7,8,3,6,5,2,4,1,9])
-fullBox.append([4,2,6,1,3,9,8,7,5])
-fullBox.append([3,5,7,9,8,6,2,4,1])
-fullBox.append([2,6,4,3,1,7,5,9,8])
-fullBox.append([1,9,8,5,2,4,3,6,7])
-fullBox.append([9,7,5,8,6,3,1,2,4])
-fullBox.append([8,3,2,4,9,1,7,5,6])
-fullBox.append([6,4,1,2,7,5,9,8,3])
+fullBox2 = []
+fullBox2.append([5,1,9,7,4,8,6,3,2])
+fullBox2.append([7,8,3,6,5,2,4,1,9])
+fullBox2.append([4,2,6,1,3,9,8,7,5])
+fullBox2.append([3,5,7,9,8,6,2,4,1])
+fullBox2.append([2,6,4,3,1,7,5,9,8])
+fullBox2.append([1,9,8,5,2,4,3,6,7])
+fullBox2.append([9,7,5,8,6,3,1,2,4])
+fullBox2.append([8,3,2,4,9,1,7,5,6])
+fullBox2.append([6,4,1,2,7,5,9,8,3])
 
 # 레벨별로 웹에 나타낼 스도쿠 격자판
 # 레벨1 = 38개
@@ -46,19 +46,3 @@ board2_Lv3.append(["","","","",2,"",3,"",""])
 board2_Lv3.append(["","","","","",3,"","",4])      
 board2_Lv3.append([8,"",2,4,"","",7,"",""])     
 board2_Lv3.append([6,"","",2,"","","",8,3])   
-
-# request: HTTP 요청 관련 정보
-# get_json(): request의 JSON 데이터를 Python 자료형(dic/list)으로 변환
-from flask import Flask, request, jsonify # flask 앱과 요청처리, JSON 응답 준비
-
-app = Flask(__name__) # flask 앱 생성
-
-@app.route('/api/check_board', methods = ['POST']) # POST 요청 받을 라우트 지정
-def check_board():
-    data = request.get_json() # JS에서 보낸 allBoards 받기
-    currentBoard = data["currentBoard"]
-    for row in range(9): # 정답표와 사용자가 입력한 스도쿠판(currentBoard)의 일치여부 검증
-        for col in range(9):
-            if currentBoard[row][col] != fullBox[row][col]:
-                return "False"
-    return "True"
