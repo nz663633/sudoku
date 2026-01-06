@@ -197,8 +197,18 @@ document.getElementById("submit").addEventListener("click", () => {
         fetch('/api/check_board', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, // 요청에 담긴 데이터의 타입: JSON 문자열
-            body: JSON.stringify(currentInfo)
-        });
+            body: JSON.stringify(currentInfo),
+        }) /* 브라우저(fetch API)가 HTTP 응답을 받아 Response 객체를 생성하고,
+           그 객체를 첫번째 .then()의 함수 인자로 전달.
+           해당 코드의 response는 Response 객체의 인스턴스 (response는 변수명일 뿐)*/
+            .then(response => response.text()) // Response 객체의 body를 문자열로 읽고 다음 then()으로 전달
+            .then(result => { // response로부터 꺼낸 실제 데이터(Flask에서 return한 데이터 -> True/False)
+                if (result === "True") {
+                    alert("정답입니다!");
+                } else {
+                    alert("오답입니다...");
+                }
+            });
     } else {
         return;
     }
