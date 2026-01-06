@@ -57,7 +57,7 @@ app = Flask(__name__) # flask 앱 생성
 def check_board():
     data = request.get_json() # JS에서 보낸 allBoards 받기
     currentBoard = data["currentBoard"]
-    for row in range(9): # 정답표와 사용자가 입력한 스도쿠판(currentBoard)의 일치여부 검증
+    for row in range(9): # 정답표와 사용자가 입력한 스도쿠판(currentBoard)의 일치여부
         for col in range(9):
             if currentBoard[row][col] != fullBox[row][col]:
                 return "False"
