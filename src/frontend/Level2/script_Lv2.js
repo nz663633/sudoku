@@ -72,6 +72,7 @@ for (let i = 0; i < 9; i++) {
         let td = document.createElement("td");
         let input = document.createElement("input");
         input.type = "text";
+        input.maxLength = "1";
         tr.appendChild(td);
         td.appendChild(input);
         room.push(input);
@@ -213,3 +214,47 @@ document.getElementById("submit").addEventListener("click", () => {
         return;
     }
 });
+
+// 타이머 설정
+let timerID = null;
+let time = 10; // 600초 = 10분
+
+function timerStart() {
+    timerID = setInterval(timerFlow, 1000); // 1초마다 timeFlow() 실행
+    document.querySelector('.timer').title = '타이머 작동 중...'
+};
+
+function timerFlow() { // 1초 흘렀을 때 해야하는 것
+    let minute = "";
+    let second = "";
+
+    minute = parseInt(time / 60);
+    if (minute < 10) { // 분이 10보다 작을 경우 앞에 0을 붙인다.
+        minute = "0" + minute;
+    }
+    second = time % 60;
+    if (second < 10) { // 초가 10보다 작을 경우 앞에 0을 붙인다.
+        second = "0" + second;
+    }
+
+    let showTimer = document.querySelector('.timer');
+    showTimer.innerHTML = `${minute}:${second}`;
+    time--;
+    if (time <= 0) { // 타이머가 종료되는 경우 1
+        timerStop();
+        alert("시간이 초과되었습니다!!!");
+    }
+};
+
+function timerStop() { // 타이머가 멈췄을 경우
+    clearInterval(timerID);
+}
+
+if (board) { // 스도쿠판이 생성되었을 경우에 타이머 생성
+    timerStart();
+};
+
+const submit = document.getElementById('submit');
+submit.onclick = function () {  // 타이머가 종료되는 경우 2
+    timerStop();
+};
