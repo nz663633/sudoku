@@ -238,7 +238,7 @@ function timerFlow() { // 1초 흘렀을 때 해야하는 것
     }
 
     let showTimer = document.querySelector('.timer');
-    showTimer.innerHTML = `${minute}:${second}`;
+    showTimer.innerHTML = `${minute} : ${second}`;
     time--;
     if (time <= 0) { // 타이머가 종료되는 경우 1
         timerStop();

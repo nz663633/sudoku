@@ -217,7 +217,7 @@ document.getElementById("submit").addEventListener("click", () => {
 
 // 타이머 설정
 let timerID = null;
-let time = 480; // 600초 = 10분
+let time = 480; // 480초 = 8분
 
 function timerStart() {
     timerID = setInterval(timerFlow, 1000); // 1초마다 timeFlow() 실행
@@ -238,7 +238,7 @@ function timerFlow() { // 1초 흘렀을 때 해야하는 것
     }
 
     let showTimer = document.querySelector('.timer');
-    showTimer.innerHTML = `${minute}:${second}`;
+    showTimer.innerHTML = `${minute} : ${second}`;
     time--;
     if (time <= 0) { // 타이머가 종료되는 경우 1
         timerStop();
