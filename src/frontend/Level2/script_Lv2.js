@@ -170,6 +170,9 @@ if (board) {
 // 제출버튼을 눌렀을 때
 document.getElementById("submit").addEventListener("click", () => {
     let submit = confirm("제출하시겠습니까?");
+    room.forEach(input => {
+        input.style.backgroundColor = ""; // 제출버튼 클릭 전 초기화
+    })
 
     if (submit === true) {
         const currentBoard = []; // 사용자가 빈칸을 입력한 스도쿠판
@@ -202,12 +205,18 @@ document.getElementById("submit").addEventListener("click", () => {
         }) /* 브라우저(fetch API)가 HTTP 응답을 받아 Response 객체를 생성하고,
            그 객체를 첫번째 .then()의 함수 인자로 전달.
            해당 코드의 response는 Response 객체의 인스턴스 (response는 변수명일 뿐)*/
-            .then(response => response.text()) // Response 객체의 body를 문자열로 읽고 다음 then()으로 전달
-            .then(result => { // response로부터 꺼낸 실제 데이터(Flask에서 return한 데이터 -> True/False)
-                if (result === "True") {
+            .then(response => response.json()) // Response 객체의 body를 문자열로 읽고 다음 then()으로 전달
+            .then(data => { // response로부터 꺼낸 실제 데이터(Flask에서 return한 데이터 -> True/False)
+                if (data.result === true) {
+                    timerStop();
                     alert("정답입니다!");
                 } else {
-                    alert("오답입니다...");
+                    alert("오답입니다...틀린 부분을 고쳐보세요!");
+                    let wrongCoords = data.wrong; // flask가 보내준 틀린 좌표
+                    wrongCoords.forEach(([row, col]) => { // 틀린 좌표들의 목록 갖고오기
+                        const index = row * 9 + col; // 2차원 좌표를 1차원 좌표 index로 변환
+                        room[index].style.backgroundColor = "red"; // 틀린 칸의 input DOM 요소에 css 적용
+                    })
                 }
             });
     } else {
@@ -217,7 +226,7 @@ document.getElementById("submit").addEventListener("click", () => {
 
 // 타이머 설정
 let timerID = null;
-let time = 600; // 600초 = 10분
+let time = 900; // 900초 = 15분
 
 function timerStart() {
     timerID = setInterval(timerFlow, 1000); // 1초마다 timeFlow() 실행
@@ -252,9 +261,4 @@ function timerStop() { // 타이머가 멈췄을 경우
 
 if (board) { // 스도쿠판이 생성되었을 경우에 타이머 생성
     timerStart();
-};
-
-const submit = document.getElementById('submit');
-submit.onclick = function () {  // 타이머가 종료되는 경우 2
-    timerStop();
 };
