@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docugment</title>
+    <title>Sudoku1-2</title>
     <style>
         table,
         tr,
@@ -76,11 +76,11 @@
     </style>
 </head>
 
-<body>
+<body data-board="1" data-level="2">
     <h3>스도쿠 게임</h3>
     <hr>
     <div class="sentence1">
-        <b><em>Level 2, 문제 2번 풀이중...</em></b>
+        <b><em>Level 2, 문제 1번 풀이중...</em></b>
     </div>
     <div class="sentence2">
         <button id="submit" class="submitBtn">제출</button>
@@ -88,4 +88,5 @@
     </div>
     <div class="chart">
     </div>
-    <script src="script_Lv2.js"></script>
+    <script src="{{ url_for('static', filename='js/script_Lv2.js') }}"></script>
+</body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docugment</title>
+    <title>Sudoku3-2</title>
     <style>
         table,
         tr,
@@ -42,34 +42,51 @@
             gap: 15px;
         }
 
-        .sentence {
-            display: flex;
-            gap: 15px;
+        .sentence1 {
             margin-top: 15px;
             margin-bottom: 20px;
+            margin-left: 20px;
+            align-items: center;
+        }
+
+        .sentence2 {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            align-items: center;
         }
 
         h3 {
             text-align: center;
         }
 
-        button {
-            width: 200px;
-            height: 200px;
+        .submitBtn {
+            font-size: 14px;
+            padding: 3px 8px;
+        }
+
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            gap: 10px;
         }
     </style>
 </head>
 
-<body>
+<body data-board="3" data-level="2">
     <h3>스도쿠 게임</h3>
     <hr>
-    <div class="sentence">
-        <ul>
-            <li><b><em>Level1에 대한 문제를 골라보세요!</em></b></li>
-        </ul>
-        <input type="button" value="문제 1" onclick="location.href='board1_Lv1.html?board=1'">
-        <input type="button" value="문제 2" onclick="location.href='board2_Lv1.html?board=2'">
-        <input type="button" value="문제 3" onclick="location.href='board3_Lv1.html?board=3'">
+    <div class="sentence1">
+        <b><em>Level 2, 문제 3번 풀이중...</em></b>
+    </div>
+    <div class="sentence2">
+        <button id="submit" class="submitBtn">제출</button>
+        <div class="timer"></div>
     </div>
     <div class="chart">
     </div>
+    <script src="{{ url_for('static', filename='js/script_Lv2.js') }}"></script>
+</body>

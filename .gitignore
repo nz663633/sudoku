@@ -20,3 +20,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+__pycache__/
+.vscode/
+venv/
+*.pyc
