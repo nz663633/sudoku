@@ -239,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (minute < 10) { // 분이 10보다 작을 경우 앞에 0을 붙인다.
             minute = "0" + minute;
         }
+        
         second = time % 60;
         if (second < 10) { // 초가 10보다 작을 경우 앞에 0을 붙인다.
             second = "0" + second;
@@ -246,11 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let showTimer = document.querySelector('.timer');
         showTimer.innerHTML = `${minute} : ${second}`;
-        time--;
+        
         if (time <= 0) { // 타이머가 종료되는 경우 1
             timerStop();
             alert("시간이 초과되었습니다. Game over...");
+            return;
         }
+
+        time--;
     };
 
     function timerStop() { // 타이머가 멈췄을 경우
