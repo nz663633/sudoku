@@ -5,10 +5,14 @@ When the user enters numbers into a 9×9 Sudoku grid, the backend verifies the s
 
 ---------
 
-### 🎯 Project Overview
+### 🔗 Live Demo
+https://sudoku-meof.onrender.com/
+
+---------
+### 🛠 Tech Stack
 
 This project is a practice toy project designed to connect
-a frontend (HTML, CSS, JavaScript) with a backend (Python Flask).
+a frontend (HTML, CSS, JavaScript) with a backend built using Python and Flask.
 
 1) **Frontend:**  
 + HTML: Builds the Sudoku board and control buttons
@@ -19,7 +23,13 @@ a frontend (HTML, CSS, JavaScript) with a backend (Python Flask).
 + Python(flask): Receives user input and validates the solution
 + Provides API endpoints
 
+3) **Deployment**
++ Render
+
 ---------
 
-### 📂 Project Structure
+### 📂 Features
+- Multiple levels and puzzle selection
+- Countdown timer
+- Highlight incorrect cells
 
