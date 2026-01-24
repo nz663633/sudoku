@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 타이머 설정
     let timerID = null;
-    let time = 1020; // 1020초 = 17분
+    let time = 1080; // 1080초 = 18분
 
     function timerStart() {
         timerID = setInterval(timerFlow, 1000); // 1초마다 timeFlow() 실행
